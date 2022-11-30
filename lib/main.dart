@@ -19,6 +19,37 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  List<String> dogsImage = [
+    'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F47%2F2020%2F08%2F04%2Fcream-golden-retriever-closeup-91607998-2000.jpg',
+    'https://keyassets.timeincuk.net/inspirewp/live/wp-content/uploads/sites/8/2020/03/GettyImages-512366437-e1583519258231-920x598.jpg',
+    'https://www.rd.com/wp-content/uploads/2021/01/GettyImages-588935825.jpg',
+    'https://www.monkoodog.com/wp-content/uploads/2022/03/Golden-Retriever-1.jpg',
+    'http://cdn.akc.org/content/article-body-image/cavkingcharlessmalldogs.jpg',
+  ];
+
+  List<String> dogsTag = [
+    'BANANA',
+    'APPLE',
+    'ORANGE',
+    'MANGO',
+    'GRAPE',
+  ];
+  List<String> dogsName = [
+    'Marly',
+    'Lucky',
+    'Buddy',
+    'Charlie',
+    'Max',
+  ];
+  List<String> dogsDate = [
+    '2021-01-01',
+    '2021-01-02',
+    '2021-01-03',
+    '2021-01-04',
+    '2021-01-05',
+  
+  ];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -89,9 +120,9 @@ class _MyAppState extends State<MyApp> {
                 ),
                 const SizedBox(height: 20),
                 SizedBox(
-                  height: 170,
+                  height: 200,
                   child: ListView.builder(
-                      itemCount: 5,
+                      itemCount: dogsImage.length, //Length is coming from the dogsImage list
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
                         return Container(
@@ -114,8 +145,8 @@ class _MyAppState extends State<MyApp> {
                             children: [
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(20),
-                                child: Image.asset(
-                                  'assets/images/dog1.jpeg',
+                                child: Image.network(
+                                  dogsImage[index], //image form dogsImage list
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -131,7 +162,7 @@ class _MyAppState extends State<MyApp> {
                                     ),
                                     child: Center(
                                       child: Text(
-                                        'BANANA',
+                                        dogsTag[index], //tag form dogsTag list
                                         style: TextStyle(
                                           color: Colors.orange[500],
                                           fontSize: 12,
@@ -150,17 +181,17 @@ class _MyAppState extends State<MyApp> {
                               const SizedBox(
                                 height: 10,
                               ),
-                              const Text(
-                                'Marly',
-                                style: TextStyle(
+                              Text(
+                                dogsName[index], //name form dogsName list
+                                style: const TextStyle(
                                   fontSize: 15,
                                   color: Colors.grey,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              const Text(
-                                '17-JUN-2021',
-                                style: TextStyle(
+                               Text(
+                                dogsDate[index], //date form dogsDate list
+                                style: const  TextStyle(
                                   fontSize: 10,
                                   color: Colors.grey,
                                 ),
@@ -172,7 +203,7 @@ class _MyAppState extends State<MyApp> {
                 ),
                 const SizedBox(height: 20),
                 const Text(
-                  'Dogs',
+                  'Cats',
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 20),
