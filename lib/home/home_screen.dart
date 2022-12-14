@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../description_page/details_screen.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({
     Key? key,
@@ -14,7 +16,6 @@ class HomeScreen extends StatelessWidget {
   final List<String> dogsTag;
   final List<String> dogsName;
   final List<String> dogsDate;
-  
 
   @override
   Widget build(BuildContext context) {
@@ -89,78 +90,89 @@ class HomeScreen extends StatelessWidget {
                       .length, //Length is coming from the dogsImage list
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    return Container(
-                      height: 150,
-                      width: 150,
-                      margin: const EdgeInsets.only(left: 10),
-                      padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              blurRadius: 12,
-                              offset: const Offset(0, 3),
-                              color: Colors.grey.withOpacity(0.1),
-                            )
-                          ]),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child: Image.network(
-                              dogsImage[index], //image form dogsImage list
-                              fit: BoxFit.cover,
-                            ),
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (BuildContext context) =>
+                                const DetailScreen(),
                           ),
-                          const SizedBox(height: 10),
-                          Row(
-                            children: [
-                              Container(
-                                height: 20,
-                                width: 60,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  color: Colors.orange[100],
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    dogsTag[index], //tag form dogsTag list
-                                    style: TextStyle(
-                                      color: Colors.orange[500],
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold,
+                        );
+                      },
+                      child: Container(
+                        height: 150,
+                        width: 150,
+                        margin: const EdgeInsets.only(left: 10),
+                        padding: const EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                blurRadius: 12,
+                                offset: const Offset(0, 3),
+                                color: Colors.grey.withOpacity(0.1),
+                              )
+                            ]),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(20),
+                              child: Image.network(
+                                dogsImage[index], //image form dogsImage list
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            Row(
+                              children: [
+                                Container(
+                                  height: 20,
+                                  width: 60,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                    color: Colors.orange[100],
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      dogsTag[index], //tag form dogsTag list
+                                      style: TextStyle(
+                                        color: Colors.orange[500],
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                              const Spacer(),
-                              const Icon(
-                                Icons.favorite_border,
-                                color: Colors.red,
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            dogsName[index], //name form dogsName list
-                            style: const TextStyle(
-                              fontSize: 15,
-                              color: Colors.grey,
-                              fontWeight: FontWeight.bold,
+                                const Spacer(),
+                                const Icon(
+                                  Icons.favorite_border,
+                                  color: Colors.red,
+                                ),
+                              ],
                             ),
-                          ),
-                          Text(
-                            dogsDate[index], //date form dogsDate list
-                            style: const TextStyle(
-                              fontSize: 10,
-                              color: Colors.grey,
+                            const SizedBox(
+                              height: 10,
                             ),
-                          ),
-                        ],
+                            Text(
+                              dogsName[index], //name form dogsName list
+                              style: const TextStyle(
+                                fontSize: 15,
+                                color: Colors.grey,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              dogsDate[index], //date form dogsDate list
+                              style: const TextStyle(
+                                fontSize: 10,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   }),

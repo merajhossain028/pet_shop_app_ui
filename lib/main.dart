@@ -56,12 +56,11 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: const DetailsScreen(),
-        // HomeScreen(
-        //     dogsImage: dogsImage,
-        //     dogsTag: dogsTag,
-        //     dogsName: dogsName,
-        //     dogsDate: dogsDate),
+        body: HomeScreen(
+            dogsImage: dogsImage,
+            dogsTag: dogsTag,
+            dogsName: dogsName,
+            dogsDate: dogsDate),
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Colors.white,
           items: [
@@ -91,4 +90,3 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
-
